@@ -10,10 +10,32 @@ public class NoiseManager : MonoBehaviour
     
     public int width = 256;
     public int height = 256;
-
+    
+    [Header("Noise Settings")]
+    [SerializeField] float scale = 0.1f;
+    private Noise _noise;
+    
+    private void FixedUpdate()
+    {
+        RecomputeNoise();
+    }
+    
     private void Awake()
     {
-        SetNoiseTexture(new float[width, height]);
+        _noise = new PerlinNoise();
+    }
+
+    private void RecomputeNoise()
+    {
+        float[,] noise = new float[width, height];
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                noise[x, y] = _noise.GetNoiseMap(x, y, scale);
+            }
+        }
+        SetNoiseTexture(noise);
     }
 
     private void SetNoiseTexture(float[,] noise)
