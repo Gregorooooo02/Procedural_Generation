@@ -15,7 +15,7 @@ public class NoiseManager : MonoBehaviour
     [Header("Noise Settings")]
     [SerializeField] float scale = 0.1f;
     [SerializeField] bool autoUpdate = true;
-    private Noise _noise;
+    private Noise1 _noise;
     
     private void FixedUpdate()
     {
