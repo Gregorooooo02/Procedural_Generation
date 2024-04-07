@@ -2,7 +2,7 @@
 This is a small project where I wanted to learn basics of Perlin Noise Generation and Terrain Generation in Unity.
 In the future I want to implement it in the RTS Engine I'm working on with my team. It uses the MonoGame Framework, so making it in Unity will be a good practice. 
 
-## Perlin Noise Generator
+## First Implementation
 Perlin Noise is a type of gradient noise which is used to generate textures, landscapes, and other things.
 In my first implementation I wanted to create a simple 2D Perlin Noise Generator which will generate a texture of this noise and display it on the screen.
 Moreover, I added a terrain and modified it with the noise to create a simple terrain generation.
