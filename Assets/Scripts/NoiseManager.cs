@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class NoiseManager : MonoBehaviour
 {
     public RawImage noiseImage;
+    public Terrain noiseTerrain;
     
     public int width = 256;
     public int height = 256;
@@ -32,7 +33,7 @@ public class NoiseManager : MonoBehaviour
         {
             for (int x = 0; x < width; x++)
             {
-                noise[x, y] = _noise.GetNoiseMap(x, y, scale);
+                noise[y, x] = _noise.GetNoiseMap(x, y, scale);
             }
         }
         SetNoiseTexture(noise);
@@ -46,7 +47,7 @@ public class NoiseManager : MonoBehaviour
         {
             for (int x = 0; x < width; x++)
             {
-                pixels[x + width * y] = Color.Lerp(Color.black, Color.white, noise[x, y]);
+                pixels[x + width * y] = Color.Lerp(Color.black, Color.white, noise[y, x]);
             }
         }
         
@@ -55,5 +56,6 @@ public class NoiseManager : MonoBehaviour
         texture.Apply();
         
         noiseImage.texture = texture;
+        noiseTerrain.terrainData.SetHeights(0, 0, noise);
     }
 }
