@@ -14,11 +14,13 @@ public class NoiseManager : MonoBehaviour
     
     [Header("Noise Settings")]
     [SerializeField] float scale = 0.1f;
+    [SerializeField] bool autoUpdate = true;
     private Noise _noise;
     
     private void FixedUpdate()
     {
-        RecomputeNoise();
+        if (autoUpdate)
+            RecomputeNoise();
     }
     
     private void Awake()
@@ -57,5 +59,10 @@ public class NoiseManager : MonoBehaviour
         
         noiseImage.texture = texture;
         noiseTerrain.terrainData.SetHeights(0, 0, noise);
+    }
+
+    private void OnGUI()
+    {
+        scale = GUI.HorizontalSlider(new Rect(25, 25, 1000, 100), scale, 0.01f, 1f);
     }
 }
