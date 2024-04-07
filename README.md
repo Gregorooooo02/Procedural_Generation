@@ -1,2 +1,9 @@
-# Procedural_Generation
-This a small project where I test Perlin Noise Generation and modify the Terrain to be more realistic. Project was made entirely in Unity.
+# Procedural Generation in Unity
+This is a small project where I wanted to learn basics of Perlin Noise Generation and Terrain Generation in Unity.
+
+First things first I needed to do some things before this project is done:
+- [] Create a Perlin Noise Generator
+- [] Create a Terrain Generator
+
+## Perlin Noise Generator
+
