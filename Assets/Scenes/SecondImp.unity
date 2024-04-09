@@ -253,10 +253,10 @@ MonoBehaviour:
   width: 100
   height: 100
   noiseScale: 25
-  octaves: 5
+  octaves: 4
   persistance: 0.5
   lacunarity: 2
-  seed: 0
+  seed: 769059
   offset: {x: 0, y: 0}
   autoUpdate: 1
   regions:

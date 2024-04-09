@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,7 +8,8 @@ public class MapGenerator : MonoBehaviour
     public enum DrawMode 
     {
         NoiseMap,
-        ColorMap
+        ColorMap,
+        Mesh
     };
 
     public DrawMode drawMode;
@@ -31,7 +33,6 @@ public class MapGenerator : MonoBehaviour
     public void GenerateMap()
     {
         float[,] noiseMap = Noise2.GenerateNoiseMap(width, height, seed, noiseScale, octaves, persistance, lacunarity, offset);
-        seed = Random.Range(-1000000, 1000000);
 
         Color[] colorMap = new Color[width * height];
         for (int y = 0; y < height; y++) 
@@ -59,6 +60,10 @@ public class MapGenerator : MonoBehaviour
         else if (drawMode == DrawMode.ColorMap)
         {
             display.DrawTexture(TextureGenerator.TextureFromColorMap(colorMap, width, height));
+        }
+        else if (drawMode == DrawMode.Mesh)
+        {
+            display.DrawMesh(MeshGenerator.GenerateTerrainMesh(noiseMap), TextureGenerator.TextureFromColorMap(colorMap, width, height));
         }
     }
 
