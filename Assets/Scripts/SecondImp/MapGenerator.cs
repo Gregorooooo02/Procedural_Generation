@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class MapGenerator : MonoBehaviour
 {   
@@ -33,7 +31,8 @@ public class MapGenerator : MonoBehaviour
     public void GenerateMap()
     {
         float[,] noiseMap = Noise2.GenerateNoiseMap(width, height, seed, noiseScale, octaves, persistance, lacunarity, offset);
-        
+        seed = Random.Range(-1000000, 1000000);
+
         Color[] colorMap = new Color[width * height];
         for (int y = 0; y < height; y++) 
         {
